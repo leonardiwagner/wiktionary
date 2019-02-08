@@ -1,11 +1,16 @@
 # wiktionary
 get word definitions from wikitionary.org
 
+[![Build Status](https://travis-ci.org/leonardiwagner/wiktionary.svg?branch=master)](https://travis-ci.org/leonardiwagner/wiktionary)
+[![Dependencies Status](https://versions.deps.co/leonardiwagner/wiktionary/status.svg)](https://versions.deps.co/leonardiwagner/wiktionary)
+[![Clojars Project](https://img.shields.io/clojars/v/wiktionary.svg)](https://clojars.org/wiktionary)
+
 ## How to use
-- Add this library on `:dependencies` in your project.clj file:
+- Leiningen/Boot
   ```clojure
-  [wiktionary "0.0.2-SNAPSHOT"]
+  [wiktionary "0.0.3-SNAPSHOT"]
   ```
+
 - Require the library:
   ```clojure
   (:require [wiktionary.core :as wiktionary])
