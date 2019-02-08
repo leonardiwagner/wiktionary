@@ -6,7 +6,7 @@ get word definitions from wikitionary.org
 [![Clojars Project](https://img.shields.io/clojars/v/wiktionary.svg)](https://clojars.org/wiktionary)
 
 ## How to use
-- Leiningen/Boot
+- Add this library on :dependencies in your project.clj file:
   ```clojure
   [wiktionary "0.0.3-SNAPSHOT"]
   ```
