@@ -1,12 +1,18 @@
 (ns wiktionary.core-test
   (:require [clojure.test :refer :all]
-            [wiktionary.html-reader :as html-reader]))
+            [wiktionary.core :as wiktionary]))
 
-(deftest return-large-data-for-existing-word
-  (let [result (html-reader/read "you")]
-    (is (instance? String result))
-    (is (> (count result) 500000))))
+(deftest get-word-definition
+  (let [result (wiktionary/get-definitions "you")
+        expected-result ["pronoun" "determiner" "verb"]]
+    (is (= result expected-result))))
 
-(deftest return-nil-for-non-existent-word
-  (is (nil?
-        (html-reader/read "yyyy"))))
+(deftest get-word-definition-from-other-language
+  (let [result (wiktionary/get-definitions "zij" "dutch")
+        expected-result ["pronoun" "noun" "verb"]]
+    (is (= result expected-result))))
+
+(deftest return-empty-if-word-is-inexistent
+  (let [result (wiktionary/get-definitions "yalu")
+        expected-result []]
+    (is (= result expected-result))))

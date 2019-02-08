@@ -1,4 +1,4 @@
-(ns wiktionary.html-language-content
+(ns wiktionary.language-extractor
   (require [net.cgrand.enlive-html :as html]))
 
 (defn- remove-empty-children-elements [htmlElements]
@@ -29,7 +29,7 @@
         until-language-end  (take-while #(not (language-title-element? %)) (rest from-language-start))]
     until-language-end))
 
-(defn extract [language html]
+(defn extract [html language]
   (-> html
     (html/html-snippet)
     (html/select [:div.mw-parser-output])
