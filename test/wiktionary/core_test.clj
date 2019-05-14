@@ -1,18 +1,14 @@
 (ns wiktionary.core-test
   (:require [clojure.test :refer :all]
+            [wiktionary.page-reader :as page-reader]
             [wiktionary.core :as wiktionary]))
 
+(defn read-page-stub [word]
+  (-> (clojure.java.io/resource "apple.html")
+      (slurp)))
+
 (deftest get-word-definition
-  (let [result (wiktionary/get-definitions "you")
-        expected-result ["pronoun" "determiner" "verb"]]
-    (is (= result expected-result))))
-
-(deftest get-word-definition-from-other-language
-  (let [result (wiktionary/get-definitions "zij" "dutch")
-        expected-result ["pronoun" "noun" "verb"]]
-    (is (= result expected-result))))
-
-(deftest return-empty-if-word-is-inexistent
-  (let [result (wiktionary/get-definitions "yalu")
-        expected-result []]
-    (is (= result expected-result))))
+  (with-redefs [page-reader/read-page read-page-stub]
+    (let [result (wiktionary/get-definitions "you" "english")
+          expected-result ["pronoun" "determiner" "verb"]]
+      (is (= result expected-result)))))

@@ -16,6 +16,7 @@
     htmlElements))
 
 (defn get-official-definitions [definitions]
+  (println definitions)
   (let [official-definitions ["pronoun", "verb", "noun", "adjective", "adverb", "conjunction", "preposition", "interjection", "letter", "numeral", "article", "particle", "mutation", "determiner", "participle", "circumposition"]]
     (reduce
       (fn [acc, definition]
@@ -26,8 +27,9 @@
       definitions)))
 
 (defn get-definitions [htmlElements]
-  (-> htmlElements
-    (get-elements-with-definition)
-    (get-elements-definiton-text)
-    (get-official-definitions)
-    (distinct)))
+  "a")
+  ; (-> htmlElements
+  ;   (get-elements-with-definition)
+  ;   (get-elements-definiton-text)
+  ;   (get-official-definitions)
+  ;   (distinct)))

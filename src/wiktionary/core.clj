@@ -2,7 +2,7 @@
   (:gen-class)
   (require [wiktionary.page-reader :as page-reader])
   (require [wiktionary.language-extractor :as language-extractor])
-  (require [wiktionary.definitions-reader :as definitions-reader]))
+  (require [wiktionary.result-builder :as result-builder]))
 
 (defn get-definitions
   ([word]
@@ -10,4 +10,4 @@
   ([word language]
    (some-> (page-reader/read-page word)
      (language-extractor/extract language)
-     (definitions-reader/get-definitions))))
+     (result-builder/build-result))))
